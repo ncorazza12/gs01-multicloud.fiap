@@ -16,6 +16,9 @@ module "gke" {
   kubernetes_version = "1.33"
   release_channel    = "REGULAR"
 
+  create_service_account = false
+  service_account        = "default"
+
   http_load_balancing        = true
   horizontal_pod_autoscaling = true
   network_policy             = false
