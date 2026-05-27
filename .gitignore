@@ -51,3 +51,7 @@ terraform.rc
 node_modules/
 npm-debug.log*
 dist/
+
+# Local agent skills
+.agents/skills/
+skills-lock.json
