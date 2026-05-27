@@ -16,9 +16,9 @@ variable "cloudflare_account_id" {
   type = string
 }
 
-variable "lb_ip_aws" {
+variable "lb_aws_hostname" {
   type        = string
-  description = "AWS EKS LoadBalancer external IP."
+  description = "AWS EKS LoadBalancer external hostname (ELB DNS name)."
 }
 
 variable "lb_ip_azure" {
