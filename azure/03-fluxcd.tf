@@ -36,5 +36,15 @@ resource "helm_release" "flux_sync" {
     value = local.flux_repo_path
   }
 
+  set {
+    name  = "kustomization.spec.decryption.provider"
+    value = "sops"
+  }
+
+  set {
+    name  = "kustomization.spec.decryption.secretRef.name"
+    value = "sops-age"
+  }
+
   depends_on = [helm_release.flux]
 }

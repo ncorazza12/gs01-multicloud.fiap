@@ -55,3 +55,6 @@ dist/
 # Local agent skills
 .agents/skills/
 skills-lock.json
+
+# Local SOPS private keys
+.sops/

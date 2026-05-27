@@ -179,6 +179,7 @@ fluxcd/
 │   ├── base/
 │   │   ├── kustomization.yaml
 │   │   ├── namespace.yaml          # ns: demo
+│   │   ├── db-credentials.sops.yaml
 │   │   ├── deployment.yaml
 │   │   └── service.yaml
 │   └── overlays/
@@ -195,7 +196,7 @@ fluxcd/
 - image: `ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1`
 - imagePullSecret: `ghcr-credentials`
 - env `CLOUD_NAME` via `configMapKeyRef` (configmap `cloud-config`)
-- env `DATABASE_URL` via `secretKeyRef` (secret `db-credentials`, key `DATABASE_URL`)
+- env `DATABASE_URL` via `secretKeyRef` (secret `db-credentials`, key `DATABASE_URL`, criptografado no Git com SOPS + age)
 - env `FRONTEND_ORIGIN` = `"*"`
 
 **`apps/base/service.yaml`:**
@@ -215,15 +216,18 @@ configMapGenerator:
 
 **`apps/overlays/azure/kustomization.yaml`:** igual, com `CLOUD_NAME=azure`
 
-> **Secrets `ghcr-credentials` e `db-credentials`** são criados manualmente depois do Flux criar o namespace `demo`:
+> **Secret `sops-age`** é criado manualmente no namespace `flux-system` em cada cluster para o Flux descriptografar secrets SOPS:
+> ```bash
+> kubectl create secret generic sops-age -n flux-system --context <ctx> \
+>   --from-file=identity.agekey=.sops/age.key
+> ```
+>
+> **Secret `ghcr-credentials`** é criado manualmente depois do Flux criar o namespace `demo`:
 > ```bash
 > kubectl create secret docker-registry ghcr-credentials -n demo --context <ctx> \
 >   --docker-server=ghcr.io \
 >   --docker-username=luizbrito7 \
 >   --docker-password="$GHCR_TOKEN"
->
-> kubectl create secret generic db-credentials -n demo --context <ctx> \
->   --from-literal=DATABASE_URL="postgresql://..."
 > ```
 
 ### 4b — Terraform Helm: `aws/03-fluxcd.tf` e `azure/03-fluxcd.tf`
