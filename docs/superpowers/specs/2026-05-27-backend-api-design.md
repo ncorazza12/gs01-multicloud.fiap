@@ -121,7 +121,7 @@ curl -X POST -H 'content-type: application/json' -d '{"name":"Test"}' .../api/su
 ## README content (`app/backend/README.md`)
 
 - Run local: `npm install`, set env vars, `node server.js`
-- Build image: `docker build -t <user>/gs01-api:v1 .`
+- Build image: `docker build -t ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1 .`
 - Endpoint table (copy from this doc)
 - Env vars table (copy from this doc)
 
