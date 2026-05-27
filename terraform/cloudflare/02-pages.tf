@@ -6,7 +6,7 @@ resource "cloudflare_pages_project" "frontend" {
   source {
     type = "github"
     config {
-      owner                         = "luizbrito7"
+      owner                         = "ncorazza12"
       repo_name                     = "gs01-multicloud.fiap"
       production_branch             = "main"
       deployments_enabled           = true

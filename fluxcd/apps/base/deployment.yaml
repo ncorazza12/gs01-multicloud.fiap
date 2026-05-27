@@ -19,7 +19,7 @@ spec:
         - name: ghcr-credentials
       containers:
         - name: api
-          image: ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1
+          image: ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

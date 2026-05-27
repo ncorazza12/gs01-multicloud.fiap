@@ -1,5 +1,5 @@
 locals {
-  flux_repo_url  = "https://github.com/luizbrito7/gs01-multicloud.fiap"
+  flux_repo_url  = "https://github.com/ncorazza12/gs01-multicloud.fiap"
   flux_repo_path = "./fluxcd/apps/overlays/aws"
 }
 

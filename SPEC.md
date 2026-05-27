@@ -9,7 +9,7 @@ Usuário
 Cloudflare Pages  (frontend React)
   │  fetch /api/subjects
   ▼
-DNS Cloudflare "api-rm562192.<zona>"  (round-robin A)
+DNS Cloudflare "api-rm562265.<zona>"  (round-robin A)
   ├──▶ AWS EKS LoadBalancer → Pod Node.js+Express  (CLOUD_NAME=aws)
   └──▶ Azure AKS LoadBalancer → Pod Node.js+Express  (CLOUD_NAME=azure)
                                          │
@@ -24,7 +24,7 @@ DNS Cloudflare "api-rm562192.<zona>"  (round-robin A)
 ## Task 1 — Limpeza do repo **[CONCLUÍDA]**
 
 - [x] Deletar `gcp/` (provider, vpc, gke, state local)
-- [x] Deletar `sa-rm562192-key.json` (nunca foi commitada — só no filesystem)
+- [x] Deletar `sa-rm562265-key.json` (nunca foi commitada — só no filesystem)
 
 ---
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS subjects (
 
 **Imagem Docker:**
 - Registry: `ghcr.io`
-- Imagem: `ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1`
+- Imagem: `ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1`
 
 **Dockerfile:**
 ```dockerfile
@@ -158,7 +158,7 @@ export const api = axios.create({
 ```
 
 **Variável de ambiente:**
-- `VITE_API_URL` — ex: `https://api-rm562192.<zona>`
+- `VITE_API_URL` — ex: `https://api-rm562265.<zona>`
 
 **Build para Cloudflare Pages:**
 - Build command: `npm run build`
@@ -193,7 +193,7 @@ fluxcd/
 
 **`apps/base/deployment.yaml`:**
 - 1 replica
-- image: `ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1`
+- image: `ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1`
 - imagePullSecret: `ghcr-credentials`
 - env `CLOUD_NAME` via `configMapKeyRef` (configmap `cloud-config`)
 - env `DATABASE_URL` via `secretKeyRef` (secret `db-credentials`, key `DATABASE_URL`, criptografado no Git com SOPS + age)
@@ -226,7 +226,7 @@ configMapGenerator:
 > ```bash
 > kubectl create secret docker-registry ghcr-credentials -n demo --context <ctx> \
 >   --docker-server=ghcr.io \
->   --docker-username=luizbrito7 \
+>   --docker-username=ncorazza12 \
 >   --docker-password="$GHCR_TOKEN"
 > ```
 
@@ -266,7 +266,7 @@ provider "helm" {
 **`aws/03-fluxcd.tf`** (e equivalente para azure com `path` diferente):
 ```hcl
 locals {
-  flux_repo_url  = "https://github.com/luizbrito7/gs01-multicloud.fiap"
+  flux_repo_url  = "https://github.com/ncorazza12/gs01-multicloud.fiap"
   flux_repo_path = "./fluxcd/apps/overlays/aws"  # azure usa "overlays/azure"
 }
 
@@ -321,7 +321,7 @@ cloudflare/
 **`00-provider.tf`:**
 ```hcl
 locals {
-  project = "rm562192"
+  project = "rm562265"
   env     = "dev"
 }
 
@@ -384,7 +384,7 @@ Conteúdo:
   2. `cd aws && terraform init && terraform apply` (~15–20min, já instala FluxCD)
   3. `cd azure && terraform init && terraform apply` (~10min, já instala FluxCD)
   4. Conectar kubectl + criar Secret `db-credentials` em cada cluster
-  5. `docker build & push` para `ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1`
+  5. `docker build & push` para `ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1`
   6. `git push` → FluxCD sincroniza automaticamente
   7. `kubectl get svc -n demo` → anotar EXTERNAL-IPs
   8. Preencher `cloudflare/terraform.tfvars` + `cd cloudflare && terraform apply`

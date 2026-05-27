@@ -21,9 +21,9 @@ DATABASE_URL="postgresql://..." CLOUD_NAME=local npm start
 ## Docker
 
 ```bash
-docker login ghcr.io -u luizbrito7
-docker build -t ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1 .
-docker push ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1
+docker login ghcr.io -u ncorazza12
+docker build -t ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1 .
+docker push ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1
 ```
 
 ## Endpoints

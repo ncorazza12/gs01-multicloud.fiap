@@ -113,15 +113,15 @@ Per SPEC. Node 20 alpine, `npm ci --only=production`, copy source, `CMD ["node",
 Out of scope per user decision. Manual validation via `curl` after deploy:
 
 ```bash
-curl https://api-rm562192.<zone>/health
-curl https://api-rm562192.<zone>/api/subjects
+curl https://api-rm562265.<zone>/health
+curl https://api-rm562265.<zone>/api/subjects
 curl -X POST -H 'content-type: application/json' -d '{"name":"Test"}' .../api/subjects
 ```
 
 ## README content (`app/backend/README.md`)
 
 - Run local: `npm install`, set env vars, `node server.js`
-- Build image: `docker build -t ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1 .`
+- Build image: `docker build -t ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1 .`
 - Endpoint table (copy from this doc)
 - Env vars table (copy from this doc)
 

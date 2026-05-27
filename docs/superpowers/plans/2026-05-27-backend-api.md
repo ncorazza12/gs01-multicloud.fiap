@@ -363,9 +363,9 @@ Schema é criado automaticamente no startup, e a tabela é populada com 8 matér
 ## Build da imagem
 
 ```bash
-docker login ghcr.io -u luizbrito7
-docker build -t ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1 .
-docker push ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1
+docker login ghcr.io -u ncorazza12
+docker build -t ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1 .
+docker push ghcr.io/ncorazza12/gs01-multicloud.fiap/gs01-api:v1
 ```
 
 ## Endpoints

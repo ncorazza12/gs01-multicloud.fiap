@@ -10,7 +10,7 @@ Create `app/frontend/.env.local` for local development:
 VITE_API_URL=http://localhost:3000
 ```
 
-For Cloudflare Pages, set `VITE_API_URL` to `https://api-rm562192.<zone>`.
+For Cloudflare Pages, set `VITE_API_URL` to `https://api-rm562265.<zone>`.
 
 ## Scripts
 

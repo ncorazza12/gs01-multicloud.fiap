@@ -11,7 +11,7 @@ provider "azurerm" {
 }
 
 locals {
-  project  = "rm562192"
+  project  = "rm562265"
   env      = "dev"
   location = "West Europe"
 }
