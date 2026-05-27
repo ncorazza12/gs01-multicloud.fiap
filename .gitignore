@@ -50,3 +50,4 @@ terraform.rc
 # Node
 node_modules/
 npm-debug.log*
+dist/
