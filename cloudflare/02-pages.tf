@@ -29,3 +29,9 @@ resource "cloudflare_pages_project" "frontend" {
     }
   }
 }
+
+resource "cloudflare_pages_domain" "frontend" {
+  account_id   = var.cloudflare_account_id
+  project_name = cloudflare_pages_project.frontend.name
+  domain       = "multicloud.${var.cloudflare_zone_name}"
+}
