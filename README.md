@@ -69,9 +69,19 @@ aws eks update-kubeconfig --region eu-west-2 --name eks-rm562192-dev --alias aws
 az aks get-credentials --resource-group rg-rm562192-dev --name aks-rm562192-dev --context azure-dev
 ```
 
-5. Crie o secret do banco nos dois clusters:
+5. Crie os secrets nos dois clusters:
 
 ```bash
+kubectl create secret docker-registry ghcr-credentials -n demo --context aws-dev \
+  --docker-server=ghcr.io \
+  --docker-username=luizbrito7 \
+  --docker-password="$GHCR_TOKEN"
+
+kubectl create secret docker-registry ghcr-credentials -n demo --context azure-dev \
+  --docker-server=ghcr.io \
+  --docker-username=luizbrito7 \
+  --docker-password="$GHCR_TOKEN"
+
 kubectl create secret generic db-credentials -n demo --context aws-dev \
   --from-literal=DATABASE_URL="postgresql://..."
 

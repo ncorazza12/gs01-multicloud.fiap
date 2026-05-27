@@ -193,6 +193,7 @@ fluxcd/
 **`apps/base/deployment.yaml`:**
 - 1 replica
 - image: `ghcr.io/luizbrito7/gs01-multicloud.fiap/gs01-api:v1`
+- imagePullSecret: `ghcr-credentials`
 - env `CLOUD_NAME` via `configMapKeyRef` (configmap `cloud-config`)
 - env `DATABASE_URL` via `secretKeyRef` (secret `db-credentials`, key `DATABASE_URL`)
 - env `FRONTEND_ORIGIN` = `"*"`
@@ -214,8 +215,13 @@ configMapGenerator:
 
 **`apps/overlays/azure/kustomization.yaml`:** igual, com `CLOUD_NAME=azure`
 
-> **Secret `db-credentials`** é criado manualmente antes do `terraform apply`:
+> **Secrets `ghcr-credentials` e `db-credentials`** são criados manualmente depois do Flux criar o namespace `demo`:
 > ```bash
+> kubectl create secret docker-registry ghcr-credentials -n demo --context <ctx> \
+>   --docker-server=ghcr.io \
+>   --docker-username=luizbrito7 \
+>   --docker-password="$GHCR_TOKEN"
+>
 > kubectl create secret generic db-credentials -n demo --context <ctx> \
 >   --from-literal=DATABASE_URL="postgresql://..."
 > ```
