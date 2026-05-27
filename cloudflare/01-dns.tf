@@ -3,8 +3,8 @@ resource "cloudflare_record" "api_aws" {
   name    = "api-${local.project}"
   type    = "A"
   value   = var.lb_ip_aws
-  proxied = false
-  ttl     = 60
+  proxied = true
+  ttl     = 1
 }
 
 resource "cloudflare_record" "api_azure" {
@@ -12,6 +12,6 @@ resource "cloudflare_record" "api_azure" {
   name    = "api-${local.project}"
   type    = "A"
   value   = var.lb_ip_azure
-  proxied = false
-  ttl     = 60
+  proxied = true
+  ttl     = 1
 }
