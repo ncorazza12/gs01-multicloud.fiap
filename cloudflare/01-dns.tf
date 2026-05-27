@@ -1,0 +1,17 @@
+resource "cloudflare_record" "api_aws" {
+  zone_id = var.cloudflare_zone_id
+  name    = "api-${local.project}"
+  type    = "A"
+  value   = var.lb_ip_aws
+  proxied = false
+  ttl     = 60
+}
+
+resource "cloudflare_record" "api_azure" {
+  zone_id = var.cloudflare_zone_id
+  name    = "api-${local.project}"
+  type    = "A"
+  value   = var.lb_ip_azure
+  proxied = false
+  ttl     = 60
+}
