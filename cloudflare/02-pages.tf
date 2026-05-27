@@ -3,6 +3,18 @@ resource "cloudflare_pages_project" "frontend" {
   name              = "gs01-${local.project}-${local.env}"
   production_branch = "main"
 
+  source {
+    type = "github"
+    config {
+      owner                         = "luizbrito7"
+      repo_name                     = "gs01-multicloud.fiap"
+      production_branch             = "main"
+      deployments_enabled           = true
+      production_deployment_enabled = true
+      preview_deployment_setting    = "all"
+    }
+  }
+
   build_config {
     build_command   = "npm run build"
     destination_dir = "dist"
