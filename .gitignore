@@ -46,3 +46,7 @@ terraform.rc
 # GCP service account keys
 *-key.json
 *sa-key*.json
+
+# Node
+node_modules/
+npm-debug.log*
