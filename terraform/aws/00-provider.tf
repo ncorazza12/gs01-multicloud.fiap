@@ -13,7 +13,7 @@ provider "aws" {
 locals {
   project = "rm562265"
   env     = "dev"
-  region  = "eu-west-2"
+  region  = "us-east-1"
 }
 
 provider "helm" {
