@@ -3,7 +3,7 @@ module "eks" {
   version = "~> 21.0"
 
   name               = "eks-${local.project}-${local.env}"
-  kubernetes_version = "1.33"
+  kubernetes_version = "1.31"
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
@@ -30,5 +30,5 @@ module "eks" {
 }
 
 output "configure_kubectl" {
-  value = "aws eks update-kubeconfig --region eu-west-2 --name ${module.eks.cluster_name}"
+  value = "aws eks update-kubeconfig --region us-east-2 --name ${module.eks.cluster_name}"
 }
