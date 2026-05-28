@@ -1,6 +1,6 @@
 # GS01 Frontend
 
-React 18 + Vite + TypeScript frontend for Cloudflare Pages.
+React 18 + Vite + TypeScript frontend.
 
 ## Environment
 
@@ -10,7 +10,7 @@ Create `app/frontend/.env.local` for local development:
 VITE_API_URL=http://localhost:3000
 ```
 
-For Cloudflare Pages, set `VITE_API_URL` to `https://api-rm562265.<zone>`.
+Em produção, set `VITE_API_URL` para o IP do LoadBalancer do EKS.
 
 ## Scripts
 
@@ -19,10 +19,3 @@ npm install
 npm run dev
 npm run build
 ```
-
-Cloudflare Pages:
-
-- Build command: `npm run build`
-- Output directory: `dist`
-- Root directory: `app/frontend`
-- Node version: `20`

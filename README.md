@@ -3,7 +3,7 @@
 **Global Solutions 01 — Cloud Computing 2026**  
 Aluno: **rm562265**
 
-Aplicação fullstack rodando em **AWS EKS**, com frontend hospedado no **Cloudflare Pages**, banco de dados **CockroachDB Serverless** e deploy contínuo via **FluxCD** (GitOps).
+Aplicação fullstack rodando em **AWS EKS**, com banco de dados **CockroachDB Serverless** e deploy contínuo via **FluxCD** (GitOps).
 
 ---
 
@@ -13,11 +13,8 @@ Aplicação fullstack rodando em **AWS EKS**, com frontend hospedado no **Cloudf
 Usuário
   │
   ▼
-Cloudflare Pages  (React 18 + Vite + TypeScript)
+Frontend (React 18 + Vite + TypeScript)
   │  fetch /api/subjects
-  ▼
-DNS Cloudflare "api-rm562265.<zona>"
-  │
   ▼
 AWS EKS LoadBalancer  →  Pod Node.js/Express  (CLOUD_NAME=aws)
                                   │
@@ -143,10 +140,7 @@ Funcionalidades:
 VITE_API_URL=http://localhost:3000
 ```
 
-Para produção (Cloudflare Pages):
-```
-VITE_API_URL=https://api-rm562265.<sua-zona>
-```
+Em produção, set `VITE_API_URL` para o IP do LoadBalancer do EKS.
 
 ### Rodando localmente
 
@@ -220,8 +214,7 @@ kubectl create secret docker-registry ghcr-credentials -n demo \
 8. kubectl create secret docker-registry ghcr-credentials ...
 9. git push → FluxCD sincroniza automaticamente
 10. Obter IP:       kubectl get svc -n demo
-11. Configurar DNS Cloudflare apontando para o IP do LoadBalancer
-12. Configurar Cloudflare Pages com VITE_API_URL
+11. Set VITE_API_URL para o IP do LoadBalancer e fazer build do frontend
 ```
 
 ---
@@ -235,7 +228,6 @@ kubectl create secret docker-registry ghcr-credentials -n demo \
 - age (`brew install age` / `apt install age`)
 - SOPS (`brew install sops`)
 - Conta [CockroachDB Serverless](https://cockroachlabs.cloud) (gratuita)
-- Conta Cloudflare com domínio gerenciado
 
 ---
 
@@ -251,7 +243,6 @@ kubectl create secret docker-registry ghcr-credentials -n demo \
 | GitOps | FluxCD 2 (flux2 + flux2-sync via Helm) |
 | Secrets | SOPS 3 + age |
 | IaC | Terraform ≥ 1.5 (módulos terraform-aws-modules/vpc e /eks) |
-| DNS / CDN | Cloudflare (DNS + Pages) |
 | Registro de imagem | GitHub Container Registry (GHCR) |
 
 ---
