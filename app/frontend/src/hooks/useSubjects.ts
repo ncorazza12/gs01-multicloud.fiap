@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api } from '../lib/api'
 
-export type CloudName = 'aws' | 'azure' | 'unknown' | string
+export type CloudName = 'aws' | 'unknown' | string
 
 export type Subject = {
   id: string

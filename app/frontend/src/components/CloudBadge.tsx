@@ -9,8 +9,6 @@ export function CloudBadge({ cloud }: CloudBadgeProps) {
   const label =
     normalized === 'aws'
       ? 'Servido por AWS'
-      : normalized === 'azure'
-        ? 'Servido por Azure'
         : 'Cloud desconhecida'
 
   return (

@@ -1,13 +1,13 @@
 # GS01 Backend API
 
-Node.js + Express API for the GS01 multicloud demo. The same image runs on AWS EKS and Azure AKS; `CLOUD_NAME` identifies the cloud in every API response.
+Node.js + Express API for the GS01 multicloud demo. The same image runs on AWS EKS; `CLOUD_NAME` identifies the cloud in every API response.
 
 ## Environment
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `DATABASE_URL` | yes | - | CockroachDB/Postgres connection string |
-| `CLOUD_NAME` | no | `unknown` | `aws` or `azure` |
+| `CLOUD_NAME` | no | `unknown` | `aws` |
 | `FRONTEND_ORIGIN` | no | `*` | CORS origin |
 | `PORT` | no | `3000` | HTTP listen port |
 

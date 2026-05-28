@@ -4,7 +4,7 @@ Refinement of the Task 2 section of `SPEC.md`. Use this doc as the source of tru
 
 ## Goal
 
-Single Node.js/Express service deployable to both EKS and AKS. Exposes a CRUD API for "subjects" backed by CockroachDB Serverless. Returns the cloud it's running on (`aws` | `azure`) in every response, so the frontend can show which backend served the request.
+Single Node.js/Express service deployable to both EKS and AKS. Exposes a CRUD API for "subjects" backed by CockroachDB Serverless. Returns the cloud it's running on (`aws`) in every response, so the frontend can show which backend served the request.
 
 ## Architecture
 

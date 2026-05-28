@@ -61,7 +61,7 @@ export default function App() {
             <div>
               <h2 className="text-lg font-semibold text-zinc-950">Materias</h2>
               <p className="text-sm text-zinc-600">
-                Lista compartilhada entre AWS EKS, Azure AKS e CockroachDB.
+                Lista compartilhada entre AWS EKS.
               </p>
             </div>
             <AddSubjectForm createSubject={handleCreateSubject} />

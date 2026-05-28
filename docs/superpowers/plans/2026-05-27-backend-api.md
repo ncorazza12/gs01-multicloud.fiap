@@ -340,7 +340,7 @@ git commit -m "feat(backend): add dockerfile and dockerignore"
 ````markdown
 # gs01 backend
 
-Node.js + Express API que expõe CRUD de matérias contra CockroachDB Serverless e identifica a cloud (`aws` ou `azure`) em cada response via env `CLOUD_NAME`.
+Node.js + Express API que expõe CRUD de matérias contra CockroachDB Serverless e identifica a cloud (`aws`) em cada response via env `CLOUD_NAME`.
 
 ## Variáveis de ambiente
 
